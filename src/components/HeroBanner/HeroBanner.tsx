@@ -1,5 +1,5 @@
 import { VolumeOff } from "lucide-react";
-import { useState } from "react";
+// import { useState } from "react";
 import HeroActions from "./HeroActions";
 import HeroBackground from "./HeroBackground";
 import HeroBadge from "./HeroBadge";
@@ -7,8 +7,8 @@ import HeroContent from "./HeroContent";
 import HeroDescription from "./HeroDescription";
 import HeroTitle from "./HeroTitle";
 import { type HeroAction } from './HeroActionItem';
-import { GenreDropdown, type GenreOption } from "../common/GenreDropdown";
-import { genreOptions } from "@/data/genreData";
+// import { GenreDropdown, type GenreOption } from "../common/GenreDropdown";
+// import { genreOptions } from "@/data/genreData";
 
 type HeroBannerProps = {
   backgroundImage: string;
@@ -30,7 +30,7 @@ export default function HeroBanner({
   className = "",
   showMuteControl = true,
 }: HeroBannerProps) {
-  const [selectedGenre, setSelectedGenre] = useState<GenreOption | null>(null);
+  // const [selectedGenre, setSelectedGenre] = useState<GenreOption | null>(null);
 
   return (
     <section
