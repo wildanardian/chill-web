@@ -1,6 +1,6 @@
 import { InfoIcon } from "lucide-react";
 
-import heroBackground from "../assets/hero/hero-section-banner.png";
+import heroBackground from "../assets/hero/hero-series-section-banner.png";
 import type { HeroAction } from "../components/HeroBanner/HeroActionItem";
 
 export type HeroBannerData = {
@@ -11,11 +11,11 @@ export type HeroBannerData = {
   ratingLabel: string;
 };
 
-const heroBannerData: HeroBannerData = {
+const heroBannerSeriesData: HeroBannerData = {
   backgroundImage: heroBackground,
-  title: "Duty After School",
+  title: "Happines",
   description:
-    "Sebuah benda tak dikenal mengambil alih dunia. Dalam keputusasaan, Departemen Pertahanan mulai merekrut lebih banyak tentara, termasuk siswa sekolah menengah. Mereka pun segera menjadi pejuang garis depan dalam perang.",
+    "Mengisahkan tentang kelompok orang yang berjuang untuk bertahan hidup di dalam sebuah gedung apartemen yang penuh dengan zombie. Sayangnya, virus zombie hanya terdapat di dalam area apartemen tersebut dan tidak menyebar ke luar kawasan apartemen.",
   actions: [
     {
       label: "Mulai",
@@ -31,4 +31,4 @@ const heroBannerData: HeroBannerData = {
   ratingLabel: "18+",
 };
 
-export default heroBannerData;
+export default heroBannerSeriesData;

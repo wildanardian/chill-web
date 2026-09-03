@@ -1,4 +1,4 @@
-import { Check, ChevronDown, Play } from "lucide-react"
+import { Check, ChevronDown, Play, Plus } from "lucide-react"
 import type { MouseEvent, RefObject } from "react"
 import { Fragment, useEffect, useRef } from "react"
 import { HoverPreviewPortal } from "../common/HoverPreviewPortal"
@@ -13,11 +13,16 @@ interface PosterCardProps {
   isPopupOpen: boolean
   openPopup: () => void
   closePopup: () => void
+  onAddToMyList?: (item: PosterItem) => void
+  onToggleMyList?: (item: PosterItem) => void
+  isInMyList?: boolean
+  size?: "default" | "compact"
 }
 
 const BADGE_STYLES: Record<PosterBadgeVariant, string> = {
   top10: "absolute right-1 top-0 flex w-[15px] h-[22px] lg:h-[48px] lg:w-[31px] items-center justify-center rounded-tr-[4px] rounded-bl-[4px] lg:rounded-bl-md lg:rounded-tr-md bg-error-pressed px-1 text-center text-[7px] lg:text-sm font-normal lg:leading-5 text-white",
   episode: "absolute left-2 top-2 rounded-full bg-primary-main-300 px-[5px] py-[2px] lg:py-1 lg:px-2.5 text-[6px] lg:text-sm font-semibold text-white",
+  premium: "absolute left-2 top-2 rounded-full bg-warning-pressed px-[5px] py-[2px] lg:py-1 lg:px-2.5 text-[6px] lg:text-sm font-semibold text-white",
 }
 
 export function PosterCard({
@@ -27,6 +32,10 @@ export function PosterCard({
   isPopupOpen,
   openPopup,
   closePopup,
+  onAddToMyList,
+  onToggleMyList,
+  isInMyList = false,
+  size = "default",
 }: PosterCardProps) {
   const { cardRef, position, show, hide } = useHoverPreviewPosition()
   const closeTimerRef = useRef<number | null>(null)
@@ -84,6 +93,11 @@ export function PosterCard({
     event.stopPropagation()
   }
 
+  const handleAddClick = (event: MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation()
+    onToggleMyList?.(item) ?? onAddToMyList?.(item)
+  }
+
   useEffect(() => {
     return () => {
       clearCloseTimer()
@@ -112,22 +126,26 @@ export function PosterCard({
     }
   }, [carouselViewportRef, isPopupOpen])
 
+  const cardSizeClass = size === "compact"
+    ? "h-[144px] w-[96px] lg:h-[312px] lg:w-[200px]"
+    : "h-[144px] w-[96px] lg:h-[365px] lg:w-[234px]"
+
   return (
     <div
       ref={cardRef}
       data-testid={`poster-card-${item.id}`}
       onClick={() => onClick?.(item)}
-      className={`group relative h-[144px] w-[96px] cursor-pointer rounded-lg lg:h-[365px] lg:w-[234px] ${isPopupOpen ? "bg-transparent lg:z-0" : "z-0"}`}
+      className={`group relative ${cardSizeClass} cursor-pointer rounded-lg ${isPopupOpen ? "lg:z-0" : "z-0"}`}
     >
       <div
         onPointerEnter={handleBasePointerEnter}
         onPointerLeave={handleBasePointerLeave}
-        className={`overflow-hidden rounded-lg  ${isPopupOpen ? "opacity-0" : "opacity-100"}`}
+        className={`overflow-hidden rounded-lg opacity-100`}
       >
         <img
           src={item.posterUrl}
           alt={item.title}
-          className="h-[144px] w-[96px] object-cover lg:h-[365px] lg:w-[234px] rounded-lg"
+          className={`${cardSizeClass} rounded-lg object-cover`}
         />
 
         {item.badge ? (
@@ -141,7 +159,7 @@ export function PosterCard({
         <div
           onPointerEnter={clearCloseTimer}
           onPointerLeave={scheduleClosePreview}
-          className="relative hidden h-[460px] w-[408px] overflow-hidden rounded-lg bg-background-paper text-white opacity-100 shadow-2xl transition duration-300 ease-out lg:block"
+          className="relative hidden h-[460px] w-[408px] overflow-hidden rounded-lg bg-background-paper text-white opacity-100 shadow-2xl lg:block"
         >
           <img
             src={item.previewPosterUrl ?? item.posterUrl}
@@ -168,11 +186,11 @@ export function PosterCard({
                 </button>
                 <button
                   type="button"
-                  onClick={handleControlClick}
-                  aria-label={`Tambahkan ${item.title} ke daftar`}
+                  onClick={handleAddClick}
+                  aria-label={isInMyList ? `Hapus ${item.title} dari daftar` : `Tambahkan ${item.title} ke daftar`}
                   className="flex h-13.5 w-13.5 items-center justify-center rounded-full border border-white/70 text-white transition hover:border-white hover:bg-white/10"
                 >
-                  <Check className="h-5 w-5" />
+                  {isInMyList ? <Check className="h-5 w-5" /> : <Plus className="h-5 w-5" />}
                 </button>
               </div>
               <button

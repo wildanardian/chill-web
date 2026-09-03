@@ -1,4 +1,6 @@
-export interface WatchItem {
+import type { MediaDetailFields } from "../../types/mediaDetail"
+
+export interface WatchItem extends MediaDetailFields {
   id: string
   title: string
   posterUrl: string

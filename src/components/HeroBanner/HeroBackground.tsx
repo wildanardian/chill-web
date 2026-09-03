@@ -18,7 +18,7 @@ export default function HeroBackground({
       <img
         src={imageUrl}
         alt={alt}
-        className="w-full h-[225px] lg:h-[587px] object-cover object-center"
+        className="w-full h-[225px] lg:h-[587px] object-cover object-top"
         loading="eager"
       />
       {children}

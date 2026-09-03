@@ -41,10 +41,10 @@ export function useHoverPreviewPosition(): {
     const offsetX = (enlargedWidth - rect.width) / 2
     const unclampedLeft = rect.left - offsetX
     const maxLeft = window.innerWidth - enlargedWidth - VIEWPORT_GUTTER
-    const left = Math.min(Math.max(unclampedLeft, VIEWPORT_GUTTER), maxLeft)
+    const left = Math.min(Math.max(unclampedLeft, VIEWPORT_GUTTER), maxLeft) + window.scrollX
 
     return {
-      top: Math.max(rect.top + PREVIEW_OFFSET_Y, VIEWPORT_GUTTER),
+      top: rect.top + window.scrollY + PREVIEW_OFFSET_Y,
       left,
       width: rect.width,
       enlargedWidth,
@@ -72,11 +72,9 @@ export function useHoverPreviewPosition(): {
     }
 
     window.addEventListener("resize", recalculate)
-    window.addEventListener("scroll", recalculate, true)
 
     return () => {
       window.removeEventListener("resize", recalculate)
-      window.removeEventListener("scroll", recalculate, true)
     }
   }, [calculatePosition, position])
 

@@ -28,7 +28,7 @@ export default function Navbar({
   className = "",
 }: NavbarProps) {
   return (
-    <nav className={`sticky top-0 z-50 h-14 bg-background-page-header px-6 text-white md:h-22 md:px-16 lg:px-28 ${className}`}>
+    <nav className={`sticky top-0 z-[1000] h-14 bg-background-page-header px-6 text-white md:h-22 md:px-16 lg:px-20 ${className}`}>
       <div className="mx-auto flex h-full items-center justify-between">
         <div className="flex min-w-0 items-center gap-5 md:gap-8 lg:gap-20">
           <Link to="/" className="shrink-0">

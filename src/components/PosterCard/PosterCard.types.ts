@@ -1,6 +1,8 @@
-export type PosterBadgeVariant = "top10" | "episode"
+import type { MediaDetailFields } from "../../types/mediaDetail"
 
-export interface PosterItem {
+export type PosterBadgeVariant = "top10" | "episode" | "premium"
+
+export interface PosterItem extends MediaDetailFields {
   id: string
   title: string
   posterUrl: string

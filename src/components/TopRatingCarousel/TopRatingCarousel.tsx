@@ -6,6 +6,9 @@ export interface TopRatingCarouselProps {
   title?: string
   items: PosterItem[]
   onItemClick?: (item: PosterItem) => void
+  onAddToMyList?: (item: PosterItem) => void
+  onToggleMyList?: (item: PosterItem) => void
+  isInMyList?: (id: string) => boolean
   className?: string
 }
 
@@ -13,6 +16,9 @@ export function TopRatingCarousel({
   title = "Top Rating Film dan Series Hari ini",
   items,
   onItemClick,
+  onAddToMyList,
+  onToggleMyList,
+  isInMyList,
   className = "",
 }: TopRatingCarouselProps) {
   const [activePopupId, setActivePopupId] = useState<string | null>(null)
@@ -30,6 +36,9 @@ export function TopRatingCarousel({
           isPopupOpen={activePopupId === item.id}
           openPopup={() => setActivePopupId(item.id)}
           closePopup={() => setActivePopupId((currentId) => currentId === item.id ? null : currentId)}
+          onAddToMyList={onAddToMyList}
+          onToggleMyList={onToggleMyList}
+          isInMyList={isInMyList?.(item.id) ?? false}
           popupAlign={index === 0 ? "start" : index === carouselItems.length - 1 ? "end" : "center"}
         />
       )}

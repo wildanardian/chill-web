@@ -39,7 +39,7 @@ export default function ProfileMenu() {
           className="absolute right-0 top-8 z-50 h-fit w-38 rounded-sm bg-background-page-header py-1 shadow-soft-card md:top-14 md:w-45 md:py-2"
         >
           <Link
-            to="#"
+            to="/profile"
             role="menuitem"
             className="flex items-center gap-3 whitespace-nowrap rounded-t-sm px-3 py-2 text-[10px] text-blue-400 hover:bg-white/10 md:gap-4 md:px-5 md:py-3 md:text-[14px]"
           >
@@ -47,7 +47,7 @@ export default function ProfileMenu() {
             Profil Saya
           </Link>
           <Link
-            to="#"
+            to="/subscription-plan"
             role="menuitem"
             className="flex items-center gap-3 px-3 py-2 text-[10px] text-white hover:bg-white/10 md:gap-4 md:px-5 md:py-3 md:text-[14px]"
           >

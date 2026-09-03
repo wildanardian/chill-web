@@ -58,6 +58,35 @@ export const rilisBaruItems: PosterItem[] = [
     episodeCount: "1 Film",
     genres: ["Misteri", "Thriller", "Drama"],
   },
+  {
+    id: "rilis-6",
+    title: "The Little Mermaid",
+    posterUrl: littleMermaidPoster,
+    previewPosterUrl: littleMermaidPreview,
+    badge: { label: "Top 10", variant: "top10" },
+    ageRating: "7+",
+    episodeCount: "1 Film",
+    genres: ["Fantasi", "Petualangan", "Keluarga"],
+  },
+  {
+    id: "rilis-7",
+    title: "Duty After School",
+    posterUrl: dutyAfterPoster,
+    badge: { label: "Episode Baru", variant: "episode" },
+    ageRating: "18+",
+    episodeCount: "10 Episode",
+    genres: ["Aksi", "Thriller", "Drama"],
+  },
+  {
+    id: "rilis-8",
+    title: "Big Hero 6",
+    posterUrl: bigHeroPoster,
+    previewPosterUrl: bigHeroPreview,
+    badge: { label: "Top 10", variant: "top10" },
+    ageRating: "7+",
+    episodeCount: "1 Film",
+    genres: ["Animasi", "Aksi", "Komedi"],
+  },
 ]
 
 export default rilisBaruItems

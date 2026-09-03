@@ -1,30 +1,37 @@
 import type { WatchItem } from '../components/MediaCard/mediaCard.types'
 
-import amancalledottoPoster from '../assets/movie/landscape/amancalledotto.png'
-import avatarPoster from '../assets/movie/landscape/avatar.png'
-import bigHeroPoster from '../assets/movie/landscape/bighero6.png'
-import blueLockPoster from '../assets/movie/landscape/bluelock.png'
-import dontLookUpPoster from '../assets/movie/landscape/dontlookup.png'
-import littleMermaidPoster from '../assets/movie/landscape/littlemermaid.png'
+import ottoPreview from '../assets/movie/landscape/amancalledotto.png'
+import avatarPreview from '../assets/movie/landscape/avatar.png'
+import bigHeroPreview from '../assets/movie/landscape/bighero6.png'
+import blueLockPreview from '../assets/movie/landscape/bluelock.png'
+import dontLookUpPreview from '../assets/movie/landscape/dontlookup.png'
+import mermaidPreview from '../assets/movie/landscape/littlemermaid.png'
+import fastPreview from '../assets/movie/landscape/fastx.png';
 
 export const continueWatchingItems: WatchItem[] = [
   {
     id: '1',
     title: 'Dont Look Up',
-    posterUrl: '/src/assets/movie/landscape/dontlookup.png',
-    previewPosterUrl: dontLookUpPoster,
+    posterUrl: dontLookUpPreview,
+    previewPosterUrl: dontLookUpPreview,
     rating: 4.5,
     maxRating: 5,
+    contentType: 'film',
+    year: '2021',
+    duration: '2j 18m',
     ageRating: '13+',
     episodeCount: '1 Film',
     genres: ['Komedi', 'Drama', 'Sains'],
+    description: 'Dua astronom mencoba memperingatkan umat manusia tentang komet yang akan menghancurkan bumi, tetapi dunia lebih sibuk dengan sensasi dan politik.',
+    cast: ['Leonardo DiCaprio', 'Jennifer Lawrence', 'Meryl Streep'],
+    creator: 'Adam McKay',
     // episodeLabel: 'Episode Baru',
   },
   {
     id: '2',
     title: 'A Man Called Otto',
-    posterUrl: '/src/assets/movie/landscape/amancalledotto.png',
-    previewPosterUrl: amancalledottoPoster,
+    posterUrl: ottoPreview,
+    previewPosterUrl: ottoPreview,
     rating: 4.0,
     ageRating: '13+',
     episodeCount: '1 Film',
@@ -33,8 +40,8 @@ export const continueWatchingItems: WatchItem[] = [
   {
     id: '3',
     title: 'Avatar',
-    posterUrl: '/src/assets/movie/landscape/avatar.png',
-    previewPosterUrl: avatarPoster,
+    posterUrl: avatarPreview,
+    previewPosterUrl: avatarPreview,
     rating: 3.8,
     ageRating: '13+',
     episodeCount: '1 Film',
@@ -43,29 +50,66 @@ export const continueWatchingItems: WatchItem[] = [
   {
     id: '4',
     title: 'Big Hero 6',
-    posterUrl: '/src/assets/movie/landscape/bighero6.png',
-    previewPosterUrl: bigHeroPoster,
+    posterUrl: bigHeroPreview,
+    previewPosterUrl: bigHeroPreview,
     rating: 4.7,
     episodeLabel: 'Episode Baru',
+    contentType: 'film',
+    year: '2014',
+    duration: '1j 42m',
     ageRating: '7+',
     episodeCount: '1 Film',
     genres: ['Animasi', 'Aksi', 'Komedi'],
+    description: 'Hiro dan robot kesehatan Baymax membentuk tim pahlawan muda untuk mengungkap ancaman di kota San Fransokyo.',
+    cast: ['Ryan Potter', 'Scott Adsit', 'Jamie Chung'],
+    creator: 'Don Hall, Chris Williams',
   },
   {
     id: '5',
     title: 'Blue Lock',
-    posterUrl: '/src/assets/movie/landscape/bluelock.png',
-    previewPosterUrl: blueLockPoster,
+    posterUrl: blueLockPreview,
+    previewPosterUrl: blueLockPreview,
     rating: 4.2,
+    contentType: 'series',
+    year: '2022',
     ageRating: '13+',
     episodeCount: '24 Episode',
     genres: ['Anime', 'Olahraga', 'Drama'],
+    description: 'Ratusan striker muda dikumpulkan dalam proyek Blue Lock untuk menemukan penyerang egois terbaik yang bisa membawa Jepang menjadi juara.',
+    cast: ['Kazuki Ura', 'Tasuku Kaito', 'Yuki Ono'],
+    creator: 'Muneyuki Kaneshiro',
+    episodes: [
+      {
+        id: 'bluelock-e1',
+        number: 1,
+        title: 'Dream',
+        description: 'Yoichi Isagi menerima undangan ke fasilitas Blue Lock setelah kekalahan menyakitkan di turnamen nasional.',
+        duration: '24 min',
+        imageUrl: blueLockPreview,
+      },
+      {
+        id: 'bluelock-e2',
+        number: 2,
+        title: 'Monster',
+        description: 'Para peserta mulai memahami aturan brutal Blue Lock saat bakat dan ego mereka diuji.',
+        duration: '24 min',
+        imageUrl: blueLockPreview,
+      },
+      {
+        id: 'bluelock-e3',
+        number: 3,
+        title: 'Soccer Zero',
+        description: 'Isagi mencari cara bertahan di timnya sambil menemukan senjata utama di lapangan.',
+        duration: '24 min',
+        imageUrl: blueLockPreview,
+      },
+    ],
   },
   {
     id: '6',
     title: 'Dont Look Up',
-    posterUrl: '/src/assets/movie/landscape/dont-look-up.png',
-    previewPosterUrl: dontLookUpPoster,
+    posterUrl: dontLookUpPreview,
+    previewPosterUrl: dontLookUpPreview,
     rating: 4.2,
     ageRating: '13+',
     episodeCount: '1 Film',
@@ -74,7 +118,8 @@ export const continueWatchingItems: WatchItem[] = [
   {
     id: '7',
     title: 'Fast & Furious',
-    posterUrl: '/src/assets/movie/landscape/fastfurious.png',
+    posterUrl: fastPreview,
+    previewPosterUrl: fastPreview,
     rating: 4.2,
     ageRating: '13+',
     episodeCount: '1 Film',
@@ -83,8 +128,8 @@ export const continueWatchingItems: WatchItem[] = [
   {
     id: '8',
     title: 'Little Mermaid',
-    posterUrl: '/src/assets/movie/landscape/littlemermaid.png',
-    previewPosterUrl: littleMermaidPoster,
+    posterUrl: mermaidPreview,
+    previewPosterUrl: mermaidPreview,
     rating: 4.2,
     ageRating: '7+',
     episodeCount: '1 Film',

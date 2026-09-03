@@ -50,7 +50,7 @@ export default function Carousel<T>({
         <div
           ref={ref}
           onWheel={handleWheel}
-          className={`scrollbar-hide flex overflow-x-auto overflow-y-hidden px-1 py-2 scroll-smooth lg:pb-0 lg:pt-8 ${gapItem ? gapItem : 'gap-4 lg:gap-6'}`}
+          className={`scrollbar-hide flex overflow-x-auto overflow-y-hidden px-1 py-2 scroll-smooth lg:pb-0 lg:pt-8 ${gapItem ? gapItem : 'gap-4 lg:gap-7'}`}
           style={{ scrollSnapType: 'x mandatory' }}
         >
           {items.map((item, index) => (
