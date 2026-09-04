@@ -6,29 +6,12 @@ import tabIcon from "../assets/icons/tablet-cellphone.png";
 import messageIcon from "../assets/icons/message-reply-text.png";
 import ContentGrid from "@/components/Subscription/ContentGrid";
 import SubscriptionPlanCard from "@/components/Subscription/SubscriptionPlanCard";
-
-const subscriptionPlans = [
-  {
-    name: "Individual",
-    price: "Mulai dari Rp49,990/bulan",
-    account: "1 Akun",
-    features: ["Tidak ada iklan", "Kualitas 720p", "Download konten pilihan"],
-  },
-  {
-    name: "Berdua",
-    price: "Mulai dari Rp79,990/bulan",
-    account: "2 Akun",
-    features: ["Tidak ada iklan", "Kualitas 1080p", "Download konten pilihan"],
-  },
-  {
-    name: "Keluarga",
-    price: "Mulai dari Rp159,990/bulan",
-    account: "5-7 Akun",
-    features: ["Tidak ada iklan", "Kualitas 4K", "Download konten pilihan"],
-  },
-]
+import { subscriptionPlans } from "@/data/subscriptionPlans";
+import { useNavigate } from "react-router";
 
 export default function SubscriptionPlan() {
+  const navigate = useNavigate()
+
   return (
     <div className="min-h-screen bg-background-page-header px-4 pb-12 pt-8 text-white md:px-8 lg:px-20 lg:pb-20 lg:pt-12">
       <div className="p-5 gap-6 flex flex-col items-center justify-center lg:gap-16 lg:py-20">
@@ -57,6 +40,7 @@ export default function SubscriptionPlan() {
               price={plan.price}
               account={plan.account}
               features={plan.features}
+              onSubscribe={() => navigate(`/payment?plan=${plan.id}`)}
             />
           ))}
         </div>

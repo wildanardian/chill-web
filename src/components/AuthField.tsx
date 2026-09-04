@@ -7,6 +7,8 @@ interface AuthFieldProps {
   placeholder: string;
   autoComplete?: string;
   className?: string;
+  value?: string;
+  onChange?: (value: string) => void;
 }
 
 export default function AuthField({
@@ -15,6 +17,8 @@ export default function AuthField({
   placeholder,
   autoComplete,
   className = "",
+  value,
+  onChange,
 }: AuthFieldProps) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const isPasswordField = type === "password";
@@ -27,6 +31,8 @@ export default function AuthField({
         <input
           type={inputType}
           autoComplete={autoComplete}
+          value={value}
+          onChange={(event) => onChange?.(event.target.value)}
           className={`w-full px-5 py-2 lg:py-3.5 pr-12 text-[#C1C2C4] text-[10px] lg:text-base rounded-3xl border border-outline-border focus:outline-none focus:ring-2 focus:ring-blue-500 ${isPasswordField ? "" : ""
             }`}
           placeholder={placeholder}

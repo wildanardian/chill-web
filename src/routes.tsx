@@ -11,6 +11,8 @@ import SeriesPage from "./pages/SeriesPage";
 import MyListPage from "./pages/MyListPage";
 import ProfilePage from "./pages/ProfilePage";
 import SubscriptionPlan from "./pages/SubscriptionPlan";
+import PaymentPage from "./pages/PaymentPage";
+import PaymentProcessPage from "./pages/PaymentProcessPage";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +24,9 @@ const router = createBrowserRouter([
       { index: true, path: "/series", element: <SeriesPage /> },
       { index: true, path: "/daftar-saya", element: <MyListPage /> },
       { index: true, path: "/profile", element: <ProfilePage /> },
-      { index: true, path: "/subscription-plan", element: <SubscriptionPlan /> }
+      { index: true, path: "/subscription-plan", element: <SubscriptionPlan /> },
+      { index: true, path: "/payment", element: <PaymentPage /> },
+      { index: true, path: "/payment-process", element: <PaymentProcessPage /> }
     ],
   },
   {

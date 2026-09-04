@@ -5,7 +5,9 @@ interface InputFieldProps {
   value: string
   type?: "text" | "email" | "password"
   editable?: boolean
+  isEditing?: boolean
   onEdit?: () => void
+  onChange?: (value: string) => void
   className?: string
 }
 
@@ -14,7 +16,9 @@ export default function InputField({
   value,
   type = "text",
   editable = false,
+  isEditing = false,
   onEdit,
+  onChange,
   className = "",
 }: InputFieldProps) {
   const displayValue = type === "password" ? "*".repeat(value.length) : value
@@ -25,7 +29,18 @@ export default function InputField({
     >
       <div className="min-w-0">
         <p className="mb-2 text-base font-700 text-light-secondary lg:text-2xl">{label}</p>
-        <p className="truncate text-xl font-400 text-white lg:text-2xl">{displayValue}</p>
+        {isEditing ? (
+          <input
+            type={type}
+            value={value}
+            onChange={(event) => onChange?.(event.target.value)}
+            className="w-full bg-transparent text-xl font-400 text-white outline-none placeholder:text-light-secondary lg:text-2xl"
+            aria-label={label}
+            autoFocus
+          />
+        ) : (
+          <p className="truncate text-xl font-400 text-white lg:text-2xl">{displayValue}</p>
+        )}
       </div>
 
       {editable ? (

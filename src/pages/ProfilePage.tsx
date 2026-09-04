@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { type FormEvent, useEffect, useState } from "react";
 import { Link, useOutletContext } from "react-router";
 
 import Button from "@/components/common/Button/Button";
@@ -9,12 +9,34 @@ import avatarIcon from "../assets/avatar/avatar.png";
 import fileUploadIcon from "../assets/icons/file-upload-outline.png";
 import warningLogo from "../assets/logo/warning.png";
 import type { MyListContextValue, MyListItem } from "@/types/myList.types";
+import { getProfileUser, saveProfileUser, type ProfileUser } from "@/utils/profileUser";
+
+type ProfileField = "name" | "email" | "password"
 
 export default function ProfilePage() {
   const { myList, addToMyList, toggleMyList, isInMyList } = useOutletContext<MyListContextValue>();
   const [activePopupId, setActivePopupId] = useState<string | null>(null);
   const [selectedMedia, setSelectedMedia] = useState<MediaDetailItem | null>(null);
   const previewItems = myList.slice(0, 6);
+
+  const [user, setUser] = useState<ProfileUser>(() => getProfileUser());
+  const [editingField, setEditingField] = useState<ProfileField | null>(null);
+
+  useEffect(() => {
+    saveProfileUser(user)
+  }, [user])
+
+  const updateUserField = (field: ProfileField, value: string) => {
+    setUser((currentUser) => ({
+      ...currentUser,
+      [field]: value,
+    }))
+  }
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    setEditingField(null)
+  }
 
   return (
     <div className="min-h-screen bg-background-page-header px-4 pb-12 pt-8 text-white md:px-8 lg:px-20 lg:pb-20 lg:pt-12">
@@ -33,9 +55,37 @@ export default function ProfilePage() {
               </div>
             </div>
           </div>
-          <InputField label="Nama Pengguna" value="William" editable />
-          <InputField label="Email" value="william1980@gmail.com" type="email" />
-          <InputField label="Kata Sandi" value="password123456" type="password" editable />
+          <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+            <InputField
+              label="Nama Pengguna"
+              value={user.name}
+              editable
+              isEditing={editingField === "name"}
+              onEdit={() => setEditingField("name")}
+              onChange={(value) => updateUserField("name", value)}
+            />
+            <InputField
+              label="Email"
+              value={user.email}
+              type="email"
+              editable
+              isEditing={editingField === "email"}
+              onEdit={() => setEditingField("email")}
+              onChange={(value) => updateUserField("email", value)}
+            />
+            <InputField
+              label="Kata Sandi"
+              value={user.password}
+              type="password"
+              editable
+              isEditing={editingField === "password"}
+              onEdit={() => setEditingField("password")}
+              onChange={(value) => updateUserField("password", value)}
+            />
+            <Button type="submit" size="lg" className="mt-2 w-fit px-8">
+              Simpan
+            </Button>
+          </form>
         </div>
         <div className="order-1 md:order-2 bg-background-extra flex h-fit items-center rounded-xl p-6 gap-5 ">
           <img src={warningLogo} className="w-19.5" />
